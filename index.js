@@ -47,9 +47,7 @@ HtmlWebpackPlugin.prototype.apply = function (compiler) {
   var self = this;
   var isCompilationCached = false;
   var compilationPromise;
-
   this.options.template = this.getFullTemplatePath(this.options.template, compiler.context);
-
   // convert absolute filename into relative so that webpack can
   // generate it at correct location
   var filename = this.options.filename;
@@ -274,7 +272,6 @@ HtmlWebpackPlugin.prototype.evaluateCompilationResult = function (compilation, s
   if (!source) {
     return Promise.reject('The child compilation didn\'t provide a result');
   }
-
   // The LibraryTemplatePlugin stores the template result in a local variable.
   // To extract the result during the evaluation this part has to be removed.
   source = source.replace('var HTML_WEBPACK_PLUGIN_RESULT =', '');
